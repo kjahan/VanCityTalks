@@ -18,10 +18,10 @@ class Segmentation{
 	//boundary definitions
 	function segmentize($radius){
 		$boundary = array(
-				"NW" => array("lon" => -123.23, "lat" => 49.29),
-				"NE" => array("lon" => -123.00, "lat" => 49.29),
-				"SE" => array("lon" => -123.00, "lat" => 49.194),
-				"SW" => array("lon" => -123.00, "lat" => 49.194),
+				"NW" => array("lon" => -123.20, "lat" => 49.275),
+				"NE" => array("lon" => -122.96, "lat" => 49.275),
+				"SE" => array("lon" => -122.96, "lat" => 49.194),
+				"SW" => array("lon" => -123.20, "lat" => 49.194),
 		);
 		//var_dump($boundary);
 		//box width and height
@@ -33,7 +33,7 @@ class Segmentation{
 		//echo $height . "<br>";
 		//$radius = 1.0; //in miles
 		$k1 = floor($width/(1.0*$radius));
-		$k2 = floor($height/(2.0*$radius));
+		$k2 = floor($height/(1.0*$radius));
 		//echo $k1 . "<br>";
 		//echo $k2 . "<br>";
 		$lat_step = abs($boundary["NW"]["lat"] - $boundary["SW"]["lat"])/floor($k2);
@@ -49,8 +49,7 @@ class Segmentation{
 				$center_lon = $boundary["NW"]["lon"] + (2*$i + 1)*$lon_step;
 				$center_lat = $boundary["NW"]["lat"] - (2*$j + 1)*$lat_step;
 				//call function score($lat, $long, $radius)
-				//echo $center_lat . "<br>";
-				//echo $center_lon . "<br>";
+				//echo $center_lon . "," . $center_lat . "<br>";
 				$region = array(
 						"radius" => $radius,
 						"lat" => $center_lat,
@@ -59,7 +58,8 @@ class Segmentation{
 				$this->regions[$cnt] = $region;
 				$cnt += 1;
 			}
-		}	
+		}
+		//print_r($this->regions);	
 	}	
 }
 ?>

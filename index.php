@@ -6,7 +6,7 @@ require_once '/var/www/VanCityTalks/rank.php';
 require_once '/var/www/VanCityTalks/helper.php';
 
 //define radius for segmentation
-$radius = 0.8;
+$radius = 1.0;
 //segmentize first
 $segments = new Segmentation;
 $segments->segmentize($radius);
@@ -17,7 +17,7 @@ $rank->computeScores($segments->regions);
 $scores = $rank->getScores();
 //$mongo_timeConsumed = round(microtime(true) - $curTime_mongo,3);
 //print "mongo total time: $mongo_timeConsumed<br />";
-//print_r($scores_);
+//print_r($scores);
 $helper = new Helper;
 $js_array = $helper->phpArrayToJSArray($scores);
 //print_r($js_array);
