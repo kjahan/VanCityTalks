@@ -1,9 +1,9 @@
 <?php
 //$curTime_mongo = microtime(true);
 error_reporting(E_ALL);
-require_once '/var/www/VanCityTalks/segmentation.php';
-require_once '/var/www/VanCityTalks/rank.php';
-require_once '/var/www/VanCityTalks/helper.php';
+require_once 'segmentation.php';
+require_once 'rank.php';
+require_once 'helper.php';
 
 //define radius for segmentation
 $radius = 1.0;
